@@ -35,7 +35,7 @@ public class Day2_2{
         ArrayList<String> output = new ArrayList<String>();
         try(Scanner input = new Scanner(System.in)){
             String in = "...";
-            System.out.println("inptus: ");
+            System.out.println("inputs: ");
             while(!in.equals("")){
                 in = input.nextLine();
                 if(in.equals("")) return output;
