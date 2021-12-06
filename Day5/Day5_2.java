@@ -1,19 +1,26 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.awt.*;
+import java.util.Scanner;
 public class Day5_2{
     public static int[][] board = new int[990][990];
     public static void main(String[] args){
         ArrayList<String> input = FileReader.getInputAsArrayList("input.txt");
         ArrayList<ArrayList<Integer>> coords = formatInput(input);
-        // for(ArrayList<Integer> a : coords){
-        //     System.out.print("[");
-        //     for(int i : a){
-        //         System.out.print(i + ",");
-        //     }
-        //     System.out.print("]");
-        //     System.out.println();
-        // }
+        
         System.out.println("Answer: " + solve(coords));
+
+
+        Visualizer v = new Visualizer(board);
+
+        // (IGNORE) Exit Window Stuff
+        Scanner inp = new Scanner(System.in);
+        String in = "...";
+        while(!in.equals("")){
+            System.out.print("Press [Enter] to exit.");
+            in = inp.nextLine();
+        }
+        System.exit(0);
     }
 
     public static int solve(ArrayList<ArrayList<Integer>> input){
@@ -57,7 +64,6 @@ public class Day5_2{
                     output++;
         return output;
     }
-
     public static ArrayList<ArrayList<Integer>> formatInput(ArrayList<String> input){
         ArrayList<ArrayList<String>> strs = new ArrayList<ArrayList<String>>();
         for(String s : input){
@@ -74,5 +80,37 @@ public class Day5_2{
             output.add(temp);
         }
         return output;
+    }
+    static class Visualizer extends Canvas{
+        private int[][] b;
+        public Visualizer(int[][] b){
+            this.b = b;
+            setBackground(Color.BLACK);
+            setSize(990, 990);
+            this.setup();
+        }
+        public void setup(){
+            Frame f = new Frame("Visualizer"); 
+            f.pack();
+            f.add(this);
+            f.setLayout(null);    
+            f.setSize(990, 990);    
+            f.setVisible(true);  
+            System.out.println(this);
+        }
+        public void paint(Graphics g){
+            for(int i = 0; i < 990; i++){
+                for(int j = 0; j < 990; j++){
+                    g.setColor(Color.BLUE);
+                    int s = this.b[i][j];
+                    if(s > 0){
+                        if(s > 1)
+                            g.setColor(Color.RED);
+                        g.drawOval(j, i, s, s);
+                    }
+                }
+            }
+        }
+        
     }
 }
