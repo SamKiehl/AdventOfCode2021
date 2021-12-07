@@ -5,8 +5,7 @@ def part1(nums):
         for j  in nums:
             fuelUsed += abs(j - i)
         tests.append(fuelUsed)
-        #print(f'num: {i}: fuelUesed: {fuelUsed}')
-    print(f'\n\n\nMin: {min(tests)}')
+    print(f'Min: {min(tests)}')
 
 def part2(nums):
     tests = []
@@ -14,16 +13,12 @@ def part2(nums):
         fuelUsed = 0
         for j  in nums:
             dS = abs(j - i)
-            fuelUsed += ((dS * (dS + 1)) / 2)
+            fuelUsed += ((dS * (dS + 1)) / 2) # General equation for sum of (+) integers from 1 => n.
         tests.append(fuelUsed)
-        #print(f'num: {i}: fuelUesed: {fuelUsed}')
-    print(f'\n\n\nMin: {min(tests)}')
+    print(f'Min: {min(tests)}')
 
 with open('input.txt') as f:
     nums = list(map(int, f.readline().split(",")))
-    # print(nums)
-    # print(f'\n\n\nMax: {max(nums)}')
-    # print(f'\n\n\nMin: : {min(nums)}')
     part1(nums)
     part2(nums)
     
