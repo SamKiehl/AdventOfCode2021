@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 public class Day5_2{
     public static int[][] board = new int[990][990];
+    public static ArrayList<ArrayList<Integer>> output = new ArrayList<ArrayList<Integer>>();
     public static void main(String[] args){
         ArrayList<String> input = FileReader.getInputAsArrayList("input.txt");
         ArrayList<ArrayList<Integer>> coords = formatInput(input);
@@ -57,7 +58,6 @@ public class Day5_2{
                     output++;
         return output;
     }
-
     public static ArrayList<ArrayList<Integer>> formatInput(ArrayList<String> input){
         ArrayList<ArrayList<String>> strs = new ArrayList<ArrayList<String>>();
         for(String s : input){
@@ -65,7 +65,7 @@ public class Day5_2{
             Collections.addAll(temp, s.split(",|\s->\s"));
             strs.add(temp);
         }
-        ArrayList<ArrayList<Integer>> output = new ArrayList<ArrayList<Integer>>();
+        
         for(int i = 0; i < strs.size(); i++){
             ArrayList<Integer> temp = new ArrayList<Integer>();
             for(String s : strs.get(i)){
