@@ -53,8 +53,6 @@ public class Day4_1{
     public static ArrayList<ArrayList<Integer>> getOutcomes(ArrayList<ArrayList<Integer>> board){
         ArrayList<ArrayList<Integer>> output = new ArrayList<ArrayList<Integer>>(12);
         //Row, Col Major
-        ArrayList<Integer> diag1 = new ArrayList<Integer>();
-        ArrayList<Integer> diag2 = new ArrayList<Integer>();
         for(int i = 0 ; i < 5; i++){
             ArrayList<Integer> colW = new ArrayList<Integer>();
             ArrayList<Integer> rowW = new ArrayList<Integer>();
@@ -64,15 +62,7 @@ public class Day4_1{
                 colW.add(board.get(j).get(i));
             }
             output.add(colW);
-
-            diag1.add(board.get(i).get(i)); // (0, 0), (1, 1), (2, 2) ...
-
-            diag2.add(board.get(4-i).get(i)); // (4, 0), (3, 1), (2, 2) ...
         }
-
-        output.add(diag1);
-
-        output.add(diag2);
 
         for(ArrayList<Integer> i : output){
             for(int ii : i ){
